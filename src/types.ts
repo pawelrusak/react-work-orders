@@ -1,4 +1,5 @@
 // That might be too strict
+// @todo
 export type AssignedStatus =
   | "Assigned"
   | "In progress"
@@ -9,7 +10,7 @@ export type WorkOrderPriority = "Low" | "High" | "Normal";
 
 export type Assigned = {
   person_name: string;
-  status: AssignedStatus;
+  status: string;
 };
 
 export type WorkOrder = {
@@ -17,8 +18,8 @@ export type WorkOrder = {
   description: string;
   received_date: string;
   assigned_to: Assigned[];
-  status: WorkOrderStatus;
-  priority: WorkOrderPriority;
+  status: string;
+  priority: string;
 };
 
 export type MockWorkOrdersResponse = {
