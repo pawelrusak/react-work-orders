@@ -8,6 +8,12 @@ import type { MockWorkOrdersResponse } from "./types";
 
 type FetchStatus = "idle" | "loading" | "succeeded" | "failed";
 
+// Try to simulate React Native styling
+const assignedToListItem = {
+  display: "flex",
+  justifyContent: "space-between",
+};
+
 type State = {
   data: MockWorkOrdersResponse | null;
   status: FetchStatus;
@@ -111,9 +117,9 @@ function App() {
                 </td>
                 <td>
                   {assigned_to.length ? (
-                    <ul>
+                    <ul className="App__assigned-to-list">
                       {assigned_to.map(({ person_name, status }) => (
-                        <li>
+                        <li style={assignedToListItem}>
                           {person_name}{" "}
                           <span
                             title={`Status ${status}`}
