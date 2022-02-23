@@ -3,6 +3,8 @@ import * as React from "react";
 import "./App.css";
 import { fakeFetch } from "./utils";
 import Table from "./components/Table/Table";
+import Search from "./components/Search/Search";
+import { useFilterWorkerOrders } from "./hooks/useFilterWorkerOrders";
 
 import type { MockWorkOrdersResponse } from "./types";
 
@@ -50,6 +52,8 @@ const fetchWorkOrderReducer = (state: State, action: Action) => {
 };
 
 function App() {
+  const [search, setSearch] = React.useState("");
+
   const [state, dispatch] = React.useReducer(fetchWorkOrderReducer, {
     data: null,
     status: "idle" as const,
@@ -72,6 +76,11 @@ function App() {
 
     fetchFakeApi();
   }, []);
+
+  const filteredWorkOrders = useFilterWorkerOrders(
+    search,
+    state.data?.response.data!
+  );
 
   let renderElement: React.ReactNode;
 
@@ -98,7 +107,7 @@ function App() {
         </thead>
 
         <tbody>
-          {state.data?.response.data.map(
+          {filteredWorkOrders.map(
             ({
               work_order_id,
               description,
@@ -144,6 +153,11 @@ function App() {
   return (
     <main className="App">
       <h1>Work orders</h1>
+
+      <Search
+        value={search}
+        onChange={(event) => setSearch(event.target.value)}
+      ></Search>
       {renderElement}
     </main>
   );
