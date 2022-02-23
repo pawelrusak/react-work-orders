@@ -1,16 +1,10 @@
 import Table from "../Table/Table";
 
-import styles from "./WorkOrdersTable.module.scss";
+import AssignedInfo from "../AssignedInfo/AssignedInfo";
 import type { WorkOrder } from "../../types";
 
 type WorkOrdersTableProps = {
   readonly workOrders: WorkOrder[];
-};
-
-// Try to simulate React Native styling
-const assignedToListItem = {
-  display: "flex",
-  justifyContent: "space-between",
 };
 
 const WorkOrdersTable = ({ workOrders }: WorkOrdersTableProps) => {
@@ -46,20 +40,7 @@ const WorkOrdersTable = ({ workOrders }: WorkOrdersTableProps) => {
                 </time>
               </td>
               <td>
-                {assigned_to.length ? (
-                  <ul className={styles.WorkOrdersTable__assigned_to_list}>
-                    {assigned_to.map(({ person_name, status }) => (
-                      <li style={assignedToListItem}>
-                        {person_name}{" "}
-                        <span
-                          title={`Status ${status}`}
-                        >{`(${status[0]})`}</span>{" "}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <i>none</i>
-                )}
+                <AssignedInfo assignedTo={assigned_to} />
               </td>
               <td>{status}</td>
               <td>{priority}</td>
