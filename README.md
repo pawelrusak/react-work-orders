@@ -4,6 +4,9 @@
   A simple React and Typescript application to display a table with the fetch data
 </p>
 
+> [!CAUTION]
+> This project is obsolete and will no longer be maintained. This repository has been set as a "public archive".
+
 ## Getting Started
 
 ### Requirements
