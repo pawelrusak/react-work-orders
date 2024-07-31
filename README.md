@@ -5,7 +5,7 @@
 </p>
 
 > [!WARNING]
-> This project is obsolete and will no longer be maintained. This repository has been set as a "Public archive".
+> This project is obsolete and will no longer be maintained. This repository has been set as a "Public archive"
 
 ## Getting Started
 
